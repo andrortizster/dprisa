@@ -89,7 +89,7 @@ const UserSettings = (props) =>{
 
 
     return (
-        <div style={{marginTop:'70px',textAlign:'center'}}>
+        <div style={{marginTop:'70px',textAlign:'center', paddingLeft:"10px", paddingRight:"10px"}}>
             <div className="Title">Ajustes del usuario</div>
             <img src={props.baseURL+props.user['photo']} alt={props.user.username} className="UserBigPhoto" />
             <Row className="UserSetting">

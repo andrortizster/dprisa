@@ -1,0 +1,19 @@
+.InfoCol{
+    display:flex;
+    justify-content:center;
+    margin-top:10px;
+}
+
+.InfoIco{
+    width:64px;
+    height:64px; 
+    background-color:green;
+    border-radius:50%;
+    text-align:center;
+}
+
+.InfoSign{
+    font-size: 42px;
+    color:white;
+    margin-top:10px;
+}

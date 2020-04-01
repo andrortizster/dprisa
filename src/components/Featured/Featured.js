@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
-import {Row} from 'reactstrap';
+import {Row,Carousel} from 'react-bootstrap';
 
 import './Featured.css';
 import * as actionTypes from '../../store/actions';
 import { connect,} from 'react-redux';
-import ProductItem from '../ProductItem/ProductItem';
+import ProductCarousel from '../ProductItem/ProductCarousel';
 
 const Featured = (props) => {
     const {onInitProducts} = props;
@@ -26,17 +26,19 @@ const Featured = (props) => {
     const Prods = () => {
       console.log(props.products)
       return props.products.map((item)=>
-        <ProductItem item={item} toFavorites={toFavorites} modalProduct={modalProduct} showWish={true} />
+      
+          <ProductCarousel item={item} toFavorites={toFavorites} modalProduct={modalProduct} showWish={true} />
       )
     }
 
     
     
     return (
-      <Row>
-
-        <Prods/>
-      </Row>
+      <div>
+        <Carousel>
+          <Prods/>
+        </Carousel>
+      </div>
     );
     
 }
