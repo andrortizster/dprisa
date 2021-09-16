@@ -1,0 +1,21 @@
+.parallax_container{
+    height: 500px;
+    width: 100%;
+}
+
+.parallax_text_box{
+    width: 100%;
+    top: 40%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    box-sizing: border-box;
+}
+
+.parallax_title{
+    color: white;
+}
+
+.parallax_title2{
+    text-align: center;
+}
