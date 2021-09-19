@@ -46,6 +46,23 @@ export const departmentProducts = (id) =>{
     }
 }
 
+export const initUser = (id) =>{
+    return dispatch => {
+        axios.get("/users/"+id+"/details/")
+            .then(response=>{
+                dispatch(setUser(response.data))
+            })
+    }
+}
+
+const setUser = (user)=>{
+    return {
+        type: actionTypes.SET_USER,
+        user: user
+    }
+
+} 
+
 
 
 /*const setTask = (task)=>{

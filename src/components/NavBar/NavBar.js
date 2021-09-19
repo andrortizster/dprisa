@@ -13,9 +13,13 @@ import {
   DropdownMenu,
   DropdownItem,
   NavbarText,
+  Button,
 } from 'reactstrap';
+import {faLock,faLockOpen} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 import avion from '../../assets/img/avion01.png';
+import './NavBar.css';
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,16 +27,16 @@ const NavBar = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
-      <Navbar color="light" light fixed="top" expand="md" style={{boxShadow:'-1px 1px 2px grey',}} >
-        <NavbarBrand ><Link style={{textDecoration:'None',color:'black'}} to="/"><img src={avion} height='32px' alt="Logo" /> Brianna Pack</Link></NavbarBrand>
+    <div >
+      <Navbar color="light" light fixed="top" expand="md" style={{boxShadow:'-1px 1px 2px grey',textDecoration:'none'}} >
+         <Link className="navbar navbar-brand" to="/"><img src={avion} height='32px' alt="Logo" /> Brianna Pack</Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="container-fluid" navbar>
             <NavItem>
-              <NavLink ><Link style={{textDecoration:'None',color:'black'}} to="/catalogo">Catálogo</Link></NavLink>
+              <Link className="nav nav-link" to="/catalogo">Catálogo</Link>
             </NavItem>
-            <NavItem>
+            {/*<NavItem>
               <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
@@ -51,12 +55,23 @@ const NavBar = (props) => {
                   Reset
                 </DropdownItem>
               </DropdownMenu>
-            </UncontrolledDropdown>
+            </UncontrolledDropdown>*/}
           </Nav>
-          <NavbarText>Simple</NavbarText>
+            { localStorage.usuario?
+              <Link className="nav nav-item InitSession" title="Iniciar sesión" to="/login"  ><FontAwesomeIcon icon={faLock} /></Link>:
+              <Link className="nav nav-item CloseSession" title="Cerrar sesión" to="/login"  ><FontAwesomeIcon icon={faLockOpen} /></Link>
+            }
+            
         </Collapse>
-      </Navbar>
-    </div>
+  </Navbar>
+    {/*}  <nav style={{textDecoration:"none"}}>
+        <ul>
+          <li><a href="/"><img src={avion} height='32px' alt="Logo" /> Brianna Pack</a></li>
+          <li><a href="/catalogo">Catálogo</a></li>
+
+        </ul>
+      </nav>*/}
+</div>
   );
 }
 

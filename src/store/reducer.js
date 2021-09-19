@@ -2,8 +2,10 @@ import  * as actionTypes from './actionsTypes';
 
 const initialState = {
     baseURL: 'https://brinpack.pythonanywhere.com',
+    //baseURL: 'http://localhost:8000',
     products:[],
     departments:[],
+    user: [],
 }
 
 
@@ -18,6 +20,11 @@ const reducer = (state=initialState, action)=>{
             return{
                 ...state,
                 departments: action.departments
+            }
+        case actionTypes.SET_USER:
+            return{
+                ...state,
+                user: action.user
             }   
         default:
             return state;
