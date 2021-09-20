@@ -1,0 +1,15 @@
+.LoginForm{
+    margin-top: 25%;
+    justify-content: center;
+}
+
+.LoginCol{
+    border: 2px green solid;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.Title{
+    font-size: large;
+    font-weight: bold;
+}
