@@ -1,8 +1,8 @@
 import  * as actionTypes from './actionsTypes';
 
 const initialState = {
-    //baseURL: 'https://brinpack.pythonanywhere.com',
-    baseURL: 'http://localhost:8000',
+    baseURL: 'https://brinpack.pythonanywhere.com',
+    //baseURL: 'http://localhost:8000',
     products:[],
     departments:[],
     user: [],

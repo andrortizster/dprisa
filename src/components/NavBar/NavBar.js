@@ -58,8 +58,9 @@ const NavBar = (props) => {
             </UncontrolledDropdown>*/}
           </Nav>
           { localStorage.usuario?
-              <Link className="nav nav-item InitSession" title="Iniciar sesión" to="/login"  ><FontAwesomeIcon icon={faLock} /></Link>:
-              <Link className="nav nav-item CloseSession" title="Cerrar sesión" to="/login"  ><FontAwesomeIcon icon={faLockOpen} /></Link>
+              <Link className="nav nav-item CloseSession" title="Cerrar sesión" to="/login"  ><FontAwesomeIcon icon={faLockOpen} /></Link>:
+              <Link className="nav nav-item InitSession" title="Iniciar sesión" to="/login"  ><FontAwesomeIcon icon={faLock} /></Link>
+              
           }
         </Collapse>
   </Navbar>
