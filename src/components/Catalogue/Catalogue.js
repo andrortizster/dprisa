@@ -49,7 +49,7 @@ const Catalogue = (props) => {
         if (props.products.length === 0){
             console.log(props.products.length)
             return (
-                <Col>
+                <Col >
                     <Alert color="danger" style={{marginTop: '10%'}} >
                         No hay productos para mostrar
                     </Alert>

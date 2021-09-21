@@ -1,10 +1,10 @@
 .LoginForm{
-    margin-top: 25%;
+    
     justify-content: center;
 }
 
 .LoginCol{
-    border: 2px green solid;
+    border: 2px gray solid;
     border-radius: 10px;
     padding: 10px;
 }
@@ -12,4 +12,22 @@
 .Title{
     font-size: large;
     font-weight: bold;
+}
+
+@media (min-width: 300px) and (min-height: 400px) {
+    .LoginForm{
+        margin-top: 50%;
+    }
+}
+
+@media (min-width: 500px) and (min-height: 401px) {
+    .LoginForm{
+        margin-top: 15%;
+    }
+}
+
+@media (min-width: 1000px) and (min-height: 700px) {
+    .LoginForm{
+        margin-top: 8%;
+    }
 }

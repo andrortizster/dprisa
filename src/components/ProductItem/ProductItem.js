@@ -27,13 +27,13 @@ import Modal from '../ProductDetail/ProductDetail';
     }
 
     return(
-        <Col xs="12" sm="4">
+        <Col xs="12" sm="3">
             <Card>
                 
                 {
                     props.item.photo===null?
-                    <CardImg top  src={no_photo} alt={props.item.name} height="250px" onClick={modalProduct} />:
-                    <CardImg top  src={props.item.photo.includes("null")?no_photo:props.item.photo} alt={props.item.name} height="250px" onClick={modalProduct} />
+                    <CardImg top  src={no_photo} alt={props.item.name} height="350px" onClick={modalProduct} />:
+                    <CardImg top  src={props.item.photo.includes("null")?no_photo:props.item.photo} alt={props.item.name} height="350px"  onClick={modalProduct} />
                 }
                 
                 <CardBody>
