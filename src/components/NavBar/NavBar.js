@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef} from 'react';
 import {Link} from 'react-router-dom';
 import {
   Collapse,
@@ -17,14 +17,71 @@ import {
 } from 'reactstrap';
 import {faLock,faLockOpen} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { connect,} from 'react-redux';
 
 import avion from '../../assets/img/avion01.png';
 import './NavBar.css';
+import axios from '../../axios';
+import Aux from '../../hoc/Auxiliary';
 
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [userMenu, setUserMenu] = useState(<Link className="nav nav-item InitSession" title="Iniciar sesión" to="/login"  ><FontAwesomeIcon icon={faLock} /></Link>);
+  
 
   const toggle = () => setIsOpen(!isOpen);
+  const mounted = useRef();
+
+  useEffect(()=>{
+      if (localStorage.usuario!==undefined) {
+        console.log(props.user)
+        const usr = {...props.user, ['photo']:props.baseURL+props.user['photo']}
+        setUserMenu(
+          <Aux>            
+            <Nav   navbar>
+            <UncontrolledDropdown nav Navbar>
+              <DropdownToggle nav caret>
+                <img src={usr.photo} alt={usr.username} className="UserPhoto" />
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem>
+                  Mis Créditos
+                </DropdownItem>
+                <DropdownItem>
+                  Ultimos productos comprados
+                </DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem>
+                <a href="#" className="nav nav-item CloseSession" title="Cerrar sesión"  onClick={handleLogout} ><FontAwesomeIcon icon={faLockOpen} /></a>
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+            </Nav>            
+          </Aux>
+        );
+      }else{
+        setUserMenu(<Link className="nav nav-item InitSession" title="Iniciar sesión" to="/login"  ><FontAwesomeIcon icon={faLock} /></Link>);
+      } 
+  },[props.user])
+
+  const handleLogout = () =>{
+    axios
+    .post("/auth/logout/")
+    .then((res) => {            
+            localStorage.clear();
+            console.log(localStorage.usuario);
+            setUserMenu(<Link className="nav nav-item InitSession" title="Iniciar sesión" to="/login"  ><FontAwesomeIcon icon={faLock} /></Link>);
+    })
+    .catch(error => {
+        console.log(error)
+    });
+  }
+
+  const SetRightMenu = () =>{
+    
+      
+  
+  }
 
   return (
     <div >
@@ -57,11 +114,7 @@ const NavBar = (props) => {
               </DropdownMenu>
             </UncontrolledDropdown>*/}
           </Nav>
-          { localStorage.usuario?
-              <Link className="nav nav-item CloseSession" title="Cerrar sesión" to="/login"  ><FontAwesomeIcon icon={faLockOpen} /></Link>:
-              <Link className="nav nav-item InitSession" title="Iniciar sesión" to="/login"  ><FontAwesomeIcon icon={faLock} /></Link>
-              
-          }
+          {userMenu}
         </Collapse>
   </Navbar>
     {/*}  <nav style={{textDecoration:"none"}}>
@@ -75,4 +128,12 @@ const NavBar = (props) => {
   );
 }
 
-export default NavBar;
+const mapStateToProps = state => {
+  return {      
+    user: state.user,
+    baseURL: state.baseURL,
+  }
+}
+
+
+export default connect(mapStateToProps,null)(NavBar);

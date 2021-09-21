@@ -44,15 +44,12 @@ const Login = (props) => {
                 email:"",
                 password:loginData.password,
             } 
-            console.log(item)
             axios
             .post("/auth/login/", item)
-            .then((res) => {
-                    
+            .then((res) => {                    
                     localStorage.clear();
                     localStorage.setItem('token', res.data.key);
-                    
-                    localStorage.setItem('usuario', loginData.username);
+                    localStorage.setItem('usuario', item.username);
                     props.onInitUser(localStorage.usuario);
                     props.history.push("/");
             })
@@ -104,7 +101,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return{
-      onInitUser: (username) => dispatch(actionTypes.initUser(username)),
+      onInitUser: (usr) => dispatch(actionTypes.initUser(usr)),
     }
 }
 

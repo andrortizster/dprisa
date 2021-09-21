@@ -3,6 +3,7 @@ import axios from '../axios'
 
 
 const setProducts = (products)=>{
+    console.log(products)
     return {
         type: actionTypes.SET_PRODUCTS,
         products: products
@@ -46,22 +47,27 @@ export const departmentProducts = (id) =>{
     }
 }
 
+const setUser = (usr)=>{
+    console.log(usr)
+    return {
+        type: actionTypes.SET_USER,
+        usr: usr
+    }
+
+} 
+
 export const initUser = (id) =>{
+    console.log(id)
+
     return dispatch => {
         axios.get("/users/"+id+"/details/")
             .then(response=>{
-                dispatch(setUser(response.data))
+                console.log(response.data[0])
+                dispatch(setUser(response.data[0]))
             })
     }
 }
 
-const setUser = (user)=>{
-    return {
-        type: actionTypes.SET_USER,
-        user: user
-    }
-
-} 
 
 
 

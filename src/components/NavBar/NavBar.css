@@ -56,9 +56,17 @@
     padding: 10px;
     border-radius: 50%;
     width: 35px;
+    text-align: center;
 }
 
 .CloseSession:hover{
     color: white;
     text-decoration: none;
+}
+
+.UserPhoto{
+    border-radius: 50%;
+    height: 36px;
+    width: 36px;
+    border: darkgrey solid 2px;
 }
