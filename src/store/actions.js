@@ -47,7 +47,7 @@ export const departmentProducts = (id) =>{
     }
 }
 
-const setUser = (usr)=>{
+export const setUser = (usr)=>{
     console.log(usr)
     return {
         type: actionTypes.SET_USER,
