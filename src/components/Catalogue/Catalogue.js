@@ -68,7 +68,7 @@ const Catalogue = (props) => {
     }
 
     return (
-        <div style={{marginTop:'60px',textAlign:'center'}}>
+        <div style={{marginTop:'70px',textAlign:'center'}}>
             <h1>Catálogo de productos</h1>
             <Row>
             <Col xs="12" sm="2">

@@ -15,7 +15,7 @@ import {
   NavbarText,
   Button,
 } from 'reactstrap';
-import {faLock,faLockOpen} from '@fortawesome/free-solid-svg-icons';
+import {faLock,faLockOpen, faCog} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { connect,} from 'react-redux';
 
@@ -45,7 +45,7 @@ const NavBar = (props) => {
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
-                  Mis Créditos
+                  <Link className="nav nav-link " title="Iniciar sesión" to="/user_settings"  ><FontAwesomeIcon icon={faCog} /> Ajustes de usuario</Link>
                 </DropdownItem>
                 <DropdownItem>
                   Ultimos productos comprados

@@ -1,0 +1,16 @@
+.UserSetting{
+    text-align: left;
+    justify-content: center;
+}
+
+.UsCol{
+    border: 2px gray solid;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.Title{
+    font-size: large;
+    font-weight: bold;
+
+}
