@@ -18,7 +18,7 @@ const UserSettings = (props) =>{
         <div style={{marginTop:'70px',textAlign:'center'}}>
             <div className="Title">Ajustes del usuario</div>
             <Row className="UserSetting">
-                <Col xs="10" sm="4" className="UsCol">
+                <Col xs="12" sm="4" className="UsCol">
                     <Form>
                         <FormGroup>
                             <Label for="dni">Dni</Label>
@@ -37,6 +37,9 @@ const UserSettings = (props) =>{
                             <Input type="text" name="email" value={props.user['email']} ></Input>
                         </FormGroup>
                     </Form>
+                </Col>
+                <Col xs="12" sm="4" >
+                    <div className="Title">Datos de interés</div>
                 </Col>
             </Row>
         </div>
