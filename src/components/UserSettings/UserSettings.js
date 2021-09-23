@@ -8,15 +8,43 @@ import {
     Row,
     Col,
     Alert,
+    Table
 } from 'reactstrap';
 import axios from '../../axios';
 import { connect,} from 'react-redux';
 
 import './UserSettings.css';
 import * as actionTypes from '../../store/actions';
+import ProductItem from '../ProductItem/ProductItem'
 
 const UserSettings = (props) =>{
+    const { initCredits,initFavourites,user } = props;
+    const [prod_fav,setProd_fav] = useState([])
+    useEffect(()=>{
+        initCredits(user['id']);
+        
+    },[initCredits,initFavourites,user])
 
+    useEffect(()=>{
+        initFavourites(user['id']);
+    },[initFavourites,user])
+
+    const ShowCredits = () => {
+        props.credits.map((item)=>{
+            console.log(item.amount)
+        })
+        
+        return props.credits.map((item)=> (
+            <tr>
+                <td>
+                    {item.creation_date}
+                </td>
+                <td>
+                    {item.amount}
+                </td>
+            </tr>
+        ));
+    }
 
     const  handleChange = (e) => {
         let { name, value } = e.target;
@@ -44,6 +72,29 @@ const UserSettings = (props) =>{
             console.log('error');
            
         });
+    }
+
+    const Prods = () => {
+        console.log(props.favourites)
+        
+        props.favourites.map((item)=>{
+            axios
+            .get('/products/'+item.product+'/')
+            .then((res)=>{
+
+                setProd_fav(prod_fav.concat(res.data))
+            })
+            .catch(error=>{
+                console.log(error)
+            })
+        })
+
+        console.log(prod_fav);
+        
+        /*return prod_fav.map((item)=>
+            <ProductItem item={item}  />
+        )*/
+        return <div>Favoritos</div>
     }
 
 
@@ -79,12 +130,29 @@ const UserSettings = (props) =>{
                 </Col>
                 <Col xs="12" sm="6" >
                     <div className="Title">Datos de interés</div>
+                    <Alert color="info">
                     <Row>
                         <Col sm="6" ><strong>Crédito:</strong> {props.user.credit_amount}$</Col>
                         <Col sm="6"><strong>Crédito reservado:</strong> {props.user.credit_reserved}$</Col>
                     </Row>
+                    </Alert>
+                        <Table bordered responsive striped size="sm">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Cantidad acreditada</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ShowCredits />
+                            </tbody>
+                        </Table>
                 </Col>
             </Row>
+            <div className="Title">
+                Lista de deseos
+            </div>
+            
         </div>
     )
 }
@@ -92,7 +160,9 @@ const UserSettings = (props) =>{
 const mapStateToProps = state => {
     return {      
       user: state.user,
-      baseURL: state.baseURL
+      baseURL: state.baseURL,
+      credits: state.credits,
+      favourites: state.favourites
     }
 }
 
@@ -100,6 +170,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return{
         onInitUser: (usr) => dispatch(actionTypes.initUser(usr)),
+        initCredits: (usr) => dispatch(actionTypes.initCredits(usr)),
+        initFavourites: (usr) => dispatch(actionTypes.initFavourites(usr)),
         setUser: (usr) => dispatch(actionTypes.setUser(usr)),
     }
 }

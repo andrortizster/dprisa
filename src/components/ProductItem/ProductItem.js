@@ -3,12 +3,14 @@ import {
     Col,Card, CardImg, CardText, 
     CardBody,CardTitle, Button,
 } from 'reactstrap';
-import {faHeart} from '@fortawesome/free-solid-svg-icons'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faHeart} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { connect,} from 'react-redux';
 
 
 import no_photo from '../../assets/img/no_photo.png';
 import Modal from '../ProductDetail/ProductDetail';
+import axios from '../../axios';
 
  const ProductItem = (props) => {
     const [modal,setModal] = useState(false);
@@ -18,8 +20,16 @@ import Modal from '../ProductDetail/ProductDetail';
     };
 
     const toFavorites = () =>{
-        console.log('Added to favorites');
-        
+        const item = { user: props.user.id, product: props.item.id };
+        axios
+        .post('/products_wish_list/',item)
+        .then((res) => {
+            console.log('success')
+        })
+        .catch(error => {
+            console.log('error');
+           
+        });        
     }
 
     const modalProduct = () => {
@@ -58,4 +68,16 @@ import Modal from '../ProductDetail/ProductDetail';
     );
  }
 
- export default ProductItem;
+ const mapStateToProps = state => {
+    return {      
+      user: state.user,
+    }
+}
+
+
+const mapDispatchToProps = dispatch => {
+    return{
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(ProductItem);

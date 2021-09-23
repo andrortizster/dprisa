@@ -47,9 +47,6 @@ const NavBar = (props) => {
                 <DropdownItem>
                   <Link className="nav nav-link " title="Iniciar sesión" to="/user_settings"  ><FontAwesomeIcon icon={faCog} /> Ajustes de usuario</Link>
                 </DropdownItem>
-                <DropdownItem>
-                  Ultimos productos comprados
-                </DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem>
                 <a href="#" className="nav nav-item CloseSession" title="Cerrar sesión"  onClick={handleLogout} ><FontAwesomeIcon icon={faLockOpen} /></a>

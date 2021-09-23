@@ -68,49 +68,41 @@ export const initUser = (id) =>{
     }
 }
 
-
-
-
-/*const setTask = (task)=>{
+export const setCredits = (crd)=>{
+    console.log(crd)
     return {
-        type: actionTypes.SET_TASK,
-        task: task
+        type: actionTypes.SET_CREDITS,
+        crd: crd
     }
 
 } 
 
-export const initTask = (taskId)=>{
+export const initCredits = (id) =>{
+    console.log(id)
+
     return dispatch => {
-        axios.get("/todos/"+taskId+"/")
+        axios.get("/users/"+id+"/credits/")
             .then(response=>{
-                dispatch(setTask(response.data))
+                dispatch(setCredits(response.data))
             })
     }
 }
 
-const setComments = (comments)=>{
-    console.log('setComments')
+
+export const setFavourites = (fvt)=>{
     return {
-        type: actionTypes.SET_COMMENTS,
-        comments: comments
+        type: actionTypes.SET_FAVOURITES,
+        fvt: fvt
     }
 
 } 
 
-export const initComments = (taskId)=>{
-    console.log('initComments')
+export const initFavourites = (id) =>{
+
     return dispatch => {
-        axios.get("/todos/"+taskId+"/comments/")
+        axios.get("/users/"+id+"/whish_list/")
             .then(response=>{
-                console.log(response.data)
-                dispatch(setComments(response.data))
+                dispatch(setFavourites(response.data))
             })
     }
 }
-
-export const setActiveItem = (activeItem)=>{
-    return {
-        type: actionTypes.SET_ACTIVEITEM,
-        activeItem: activeItem
-    }
-}*/
