@@ -26,7 +26,7 @@ const Featured = (props) => {
     const Prods = () => {
       console.log(props.products)
       return props.products.map((item)=>
-        <ProductItem item={item} toFavorites={toFavorites} modalProduct={modalProduct} />
+        <ProductItem item={item} toFavorites={toFavorites} modalProduct={modalProduct} showWish={true} />
       )
     }
 

@@ -54,7 +54,6 @@ import axios from '../../axios';
                         <FontAwesomeIcon icon={faHeart} />
                     </Button>:
                     null
-
                  }
                 </CardBody>
             </Card>

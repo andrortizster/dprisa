@@ -63,7 +63,7 @@ const Catalogue = (props) => {
         });
         console.log(fixedProducts)
         return fixedProducts.map((item) =>
-            <ProductItem item={item} />
+            <ProductItem item={item} showWish={true} />
         )
     }
 

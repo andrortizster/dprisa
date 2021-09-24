@@ -16,7 +16,7 @@ import { connect,} from 'react-redux';
 import './UserSettings.css';
 import * as actionTypes from '../../store/actions';
 import ProductItem from '../ProductItem/ProductItem'
-
+//TODO: Añadir código para evitar que entren aqui poniendo la direccion en el navegador
 const UserSettings = (props) =>{
     const { initCredits,initFavourites,user } = props;
     const [prod_fav,setProd_fav] = useState([])

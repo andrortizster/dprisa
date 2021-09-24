@@ -1,11 +1,11 @@
 .Link{
     text-decoration: none;
-    color: black;
+    color: inherit;
 }
 
 .Link:hover{
     text-decoration: none;
-    color: black;
+    color: inherit;
 }
 
 
@@ -42,6 +42,7 @@
     padding: 10px;
     border-radius: 50%;
     width: 35px;
+    height: 35px;
 
 }
 
@@ -56,7 +57,9 @@
     padding: 10px;
     border-radius: 50%;
     width: 35px;
+    height: 35px;
     text-align: center;
+    vertical-align: middle;
 }
 
 .CloseSession:hover{

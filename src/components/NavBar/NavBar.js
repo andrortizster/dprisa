@@ -29,22 +29,26 @@ const NavBar = (props) => {
         console.log(props.user)
         const usr = {...props.user, ['photo']:props.baseURL+props.user['photo']}
         setUserMenu(
-          <Aux>            
-            <Nav   navbar>
-            <NavDropdown >
-                <Dropdown.Item>
-                  <Link className="nav nav-link " title="Iniciar sesión" to="/user_settings"  ><FontAwesomeIcon icon={faCog} /> Ajustes de usuario</Link>
-                </Dropdown.Item>
-                <Dropdown.Item divider />
-                <Dropdown.Item>
-                <a href="#" className="nav nav-item CloseSession" title="Cerrar sesión"  onClick={handleLogout} ><FontAwesomeIcon icon={faLockOpen} /></a>
-                </Dropdown.Item>
+          <Aux> 
+            <NavDropdown title={props.user['username']} id="basic-nav-dropdown">
+              
+              <NavDropdown.Item >
+                <Link className="nav nav-link " title="Iniciar sesión" to="/user_settings"  ><FontAwesomeIcon icon={faCog} /> Ajustes de usuario</Link>
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item >
+                <a href="#" className="nav nav-item" title="Cerrar sesión"  onClick={handleLogout} ><span className="CloseSession"><FontAwesomeIcon icon={faLockOpen} /></span> Cerrar sesión</a>
+              </NavDropdown.Item>
             </NavDropdown>
-            </Nav>            
+            <Nav.Item>
+              <img src={usr['photo']} alt={props.user['username']} className="UserPhoto" />
+            </Nav.Item>                       
           </Aux>
         );
       }else{
-        setUserMenu(<Link className="nav nav-item InitSession" title="Iniciar sesión" to="/login"  ><FontAwesomeIcon icon={faLock} /></Link>);
+        setUserMenu(<Nav.Item >
+            <Link className="nav nav-item InitSession" title="Iniciar sesión" to="/login"  ><FontAwesomeIcon icon={faLock} /></Link>
+          </Nav.Item>);
       } 
   },[props.user])
 
@@ -54,7 +58,9 @@ const NavBar = (props) => {
     .then((res) => {            
             localStorage.clear();
             console.log(localStorage.usuario);
-            setUserMenu(<Link className="nav nav-item InitSession" title="Iniciar sesión" to="/login"  ><FontAwesomeIcon icon={faLock} /></Link>);
+            setUserMenu(<NavDropdown.Item >
+                <Link className="nav nav-item InitSession" title="Iniciar sesión" to="/login"  ><FontAwesomeIcon icon={faLock} /></Link>
+              </NavDropdown.Item>);
     })
     .catch(error => {
         console.log(error)
@@ -69,7 +75,7 @@ const NavBar = (props) => {
 
   return (
     <div >
-      <Navbar collapseOnSelect bg="light" expand="lg">
+      <Navbar collapseOnSelect bg="light" expand="lg" fixed="top">
         <Container>
           <Navbar.Brand >
             <Link className="navbar navbar-brand" to="/"><img src={avion} height='32px' alt="Logo" /> Brianna Pack</Link>
@@ -80,17 +86,8 @@ const NavBar = (props) => {
               <Nav.Link >
                 <Link className="Link" to="/catalogo">Catálogo</Link>
               </Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <img src={props.user['photo']} alt={props.user['username']} className="UserPhoto" />
-                <NavDropdown.Item >
-                  <Link className="nav nav-link " title="Iniciar sesión" to="/user_settings"  ><FontAwesomeIcon icon={faCog} /> Ajustes de usuario</Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-              </NavDropdown>
+              {userMenu}
+              
             </Nav>
           </Navbar.Collapse>
         </Container>
