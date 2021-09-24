@@ -32,9 +32,12 @@ const ProductDetail = (props) => {
                 
             </ModalBody>
             <ModalFooter align="center">
+                {props.showWish?
                     <Button color="danger" title="Añadir a favoritos" onClick={props.toFavorites} >
                         <FontAwesomeIcon icon={faHeart} />
-                    </Button>
+                    </Button>:
+                    null
+                }
             </ModalFooter>
 
         </Modal>

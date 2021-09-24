@@ -75,26 +75,16 @@ const UserSettings = (props) =>{
     }
 
     const Prods = () => {
-        console.log(props.favourites)
-        
+        const fixedProducts = []
         props.favourites.map((item)=>{
-            axios
-            .get('/products/'+item.product+'/')
-            .then((res)=>{
-
-                setProd_fav(prod_fav.concat(res.data))
-            })
-            .catch(error=>{
-                console.log(error)
-            })
+            const temp_item = {...item, ['photo']:props.baseURL+item['photo']}
+            fixedProducts.push(temp_item)
         })
-
-        console.log(prod_fav);
         
-        /*return prod_fav.map((item)=>
-            <ProductItem item={item}  />
-        )*/
-        return <div>Favoritos</div>
+        return fixedProducts.map((item)=>
+            <ProductItem item={item} showWish={false}   />
+        )
+        //return <div>Favoritos</div>
     }
 
 
@@ -152,7 +142,9 @@ const UserSettings = (props) =>{
             <div className="Title">
                 Lista de deseos
             </div>
-            
+            <Row>
+                <Prods/>
+            </Row>
         </div>
     )
 }

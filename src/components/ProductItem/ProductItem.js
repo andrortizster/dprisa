@@ -49,9 +49,13 @@ import axios from '../../axios';
                 <CardBody>
                 <CardTitle tag="h5">{props.item.name}</CardTitle>
                 <CardText>{props.item.description}</CardText>
-                <Button color="danger" title="Añadir a favoritos" onClick={toFavorites} >
-                    <FontAwesomeIcon icon={faHeart} />
-                </Button>
+                {props.showWish?
+                    <Button color="danger" title="Añadir a favoritos" onClick={toFavorites} >
+                        <FontAwesomeIcon icon={faHeart} />
+                    </Button>:
+                    null
+
+                 }
                 </CardBody>
             </Card>
 
@@ -60,6 +64,7 @@ import axios from '../../axios';
                     activeItem={props.item}
                     toggle = {toggle}
                     toFavorites = {toFavorites}
+                    showWhish = {props.showWish}
                 />
             ) : null}
         </Col>
