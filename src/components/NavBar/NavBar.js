@@ -1,20 +1,12 @@
 import React, { useEffect, useState, useRef} from 'react';
 import {Link} from 'react-router-dom';
 import {
-  Collapse,
   Navbar,
-  NavbarToggler,
-  NavbarBrand,
+  NavDropdown,
+  Dropdown,
   Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText,
-  Button,
-} from 'reactstrap';
+  Container,
+} from 'react-bootstrap';
 import {faLock,faLockOpen, faCog} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { connect,} from 'react-redux';
@@ -39,20 +31,15 @@ const NavBar = (props) => {
         setUserMenu(
           <Aux>            
             <Nav   navbar>
-            <UncontrolledDropdown nav Navbar>
-              <DropdownToggle nav caret>
-                <img src={usr.photo} alt={usr.username} className="UserPhoto" />
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
+            <NavDropdown >
+                <Dropdown.Item>
                   <Link className="nav nav-link " title="Iniciar sesión" to="/user_settings"  ><FontAwesomeIcon icon={faCog} /> Ajustes de usuario</Link>
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
+                </Dropdown.Item>
+                <Dropdown.Item divider />
+                <Dropdown.Item>
                 <a href="#" className="nav nav-item CloseSession" title="Cerrar sesión"  onClick={handleLogout} ><FontAwesomeIcon icon={faLockOpen} /></a>
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
+                </Dropdown.Item>
+            </NavDropdown>
             </Nav>            
           </Aux>
         );
@@ -82,15 +69,41 @@ const NavBar = (props) => {
 
   return (
     <div >
-      <Navbar color="light" light fixed="top" expand="md" style={{boxShadow:'-1px 1px 2px grey',textDecoration:'none'}} >
-         <Link className="navbar navbar-brand" to="/"><img src={avion} height='32px' alt="Logo" /> Brianna Pack</Link>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
+      <Navbar collapseOnSelect bg="light" expand="lg">
+        <Container>
+          <Navbar.Brand >
+            <Link className="navbar navbar-brand" to="/"><img src={avion} height='32px' alt="Logo" /> Brianna Pack</Link>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
+            <Nav>
+              <Nav.Link >
+                <Link className="Link" to="/catalogo">Catálogo</Link>
+              </Nav.Link>
+              <Nav.Link href="#link">Link</Nav.Link>
+              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <img src={props.user['photo']} alt={props.user['username']} className="UserPhoto" />
+                <NavDropdown.Item >
+                  <Link className="nav nav-link " title="Iniciar sesión" to="/user_settings"  ><FontAwesomeIcon icon={faCog} /> Ajustes de usuario</Link>
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+      {/*<Navbar color="light" light fixed="top" expand="md" style={{boxShadow:'-1px 1px 2px grey',textDecoration:'none'}} >
+        <Navbar.Brand href="#"> <Link className="navbar navbar-brand" to="/"><img src={avion} height='32px' alt="Logo" /> Brianna Pack</Link> </Navbar.Brand>
+        <Navbar.Toggle onClick={toggle} />
+        <NavBar.Collapse >
           <Nav className="container-fluid" navbar>
             <NavItem>
               <Link className="nav nav-link" to="/catalogo">Catálogo</Link>
             </NavItem>
-            {/*<NavItem>
+            <NavItem>
               <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
@@ -109,11 +122,10 @@ const NavBar = (props) => {
                   Reset
                 </DropdownItem>
               </DropdownMenu>
-            </UncontrolledDropdown>*/}
+            </UncontrolledDropdown>
           </Nav>
-          {userMenu}
-        </Collapse>
-  </Navbar>
+        </NavBar.Collapse>
+  </Navbar>*/}
     {/*}  <nav style={{textDecoration:"none"}}>
         <ul>
           <li><a href="/"><img src={avion} height='32px' alt="Logo" /> Brianna Pack</a></li>
