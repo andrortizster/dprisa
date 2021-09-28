@@ -19,6 +19,7 @@ import Aux from '../../hoc/Auxiliary';
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [userMenu, setUserMenu] = useState(<Link className="nav nav-item InitSession" title="Iniciar sesión" to="/login"  ><FontAwesomeIcon icon={faLock} /></Link>);
+  const [adminMenu,setAdminMenu] = useState(null);
   
 
   const toggle = () => setIsOpen(!isOpen);
@@ -28,6 +29,20 @@ const NavBar = (props) => {
       if (localStorage.usuario!==undefined) {
         console.log(props.user)
         const usr = {...props.user, ['photo']:props.baseURL+props.user['photo']}
+
+        if (props.user.is_staff){
+          setAdminMenu(
+            <Aux> 
+              <NavDropdown title="Administración" id="basic-nav-dropdown">
+                <NavDropdown.Item >
+                  <Link className="nav nav-link " title="Editar productos" to="/edit_products"  > Edición de productos</Link>
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Aux>
+          )
+        }
+
+
         setUserMenu(
           <Aux> 
             <NavDropdown title={props.user['username']} id="basic-nav-dropdown">
@@ -67,8 +82,7 @@ const NavBar = (props) => {
     });
   }
 
-  const SetRightMenu = () =>{
-    
+  const SetRightMenu = () =>{  
       
   
   }
@@ -86,50 +100,13 @@ const NavBar = (props) => {
               <Nav.Link >
                 <Link className="Link" to="/catalogo">Catálogo</Link>
               </Nav.Link>
+              {adminMenu}
               {userMenu}
               
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      {/*<Navbar color="light" light fixed="top" expand="md" style={{boxShadow:'-1px 1px 2px grey',textDecoration:'none'}} >
-        <Navbar.Brand href="#"> <Link className="navbar navbar-brand" to="/"><img src={avion} height='32px' alt="Logo" /> Brianna Pack</Link> </Navbar.Brand>
-        <Navbar.Toggle onClick={toggle} />
-        <NavBar.Collapse >
-          <Nav className="container-fluid" navbar>
-            <NavItem>
-              <Link className="nav nav-link" to="/catalogo">Catálogo</Link>
-            </NavItem>
-            <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-            </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Options
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  Option 1
-                </DropdownItem>
-                <DropdownItem>
-                  Option 2
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                  Reset
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </Nav>
-        </NavBar.Collapse>
-  </Navbar>*/}
-    {/*}  <nav style={{textDecoration:"none"}}>
-        <ul>
-          <li><a href="/"><img src={avion} height='32px' alt="Logo" /> Brianna Pack</a></li>
-          <li><a href="/catalogo">Catálogo</a></li>
-
-        </ul>
-      </nav>*/}
 </div>
   );
 }
