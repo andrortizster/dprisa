@@ -4,6 +4,7 @@ import {Row,Carousel} from 'react-bootstrap';
 import './Featured.css';
 import * as actionTypes from '../../store/actions';
 import { connect,} from 'react-redux';
+import no_photo from '../../assets/img/no_photo.png';
 
 const Featured = (props) => {
     const {onInitProducts} = props;
