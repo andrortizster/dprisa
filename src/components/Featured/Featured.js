@@ -4,7 +4,6 @@ import {Row,Carousel} from 'react-bootstrap';
 import './Featured.css';
 import * as actionTypes from '../../store/actions';
 import { connect,} from 'react-redux';
-import ProductCarousel from '../ProductItem/ProductCarousel';
 
 const Featured = (props) => {
     const {onInitProducts} = props;
@@ -23,22 +22,32 @@ const Featured = (props) => {
       console.log('Añadido a favoritos')
     }
 
-    const Prods = () => {
-      console.log(props.products)
-      return props.products.map((item)=>
-      
-          <ProductCarousel item={item} toFavorites={toFavorites} modalProduct={modalProduct} showWish={true} />
-      )
-    }
+    
 
     
     
     return (
-      <div>
-        <Carousel>
-          <Prods/>
+        <Carousel fade variant="dark" width="50%">
+          {
+            props.products.map((item)=>      
+              <Carousel.Item >
+                <div className="CarouselItem">
+                {
+                    item.photo===null?
+                    <img  src={no_photo} alt={item.name} height="350px" />:
+                    <img  src={item.photo} alt={item.name} height="350px"/>
+                }
+                </div>
+                <Carousel.Caption className="CarouselItem">
+                  <div className="CarouselCaption">
+                    <h3>{item.name}</h3>
+                    <p><span><strong>Precio: </strong>{item.price} $</span>&nbsp;&nbsp;&nbsp;<span><strong>U/M: </strong>{item.um_name}</span></p>
+                  </div>
+                </Carousel.Caption>
+              </Carousel.Item>
+            )
+          } 
         </Carousel>
-      </div>
     );
     
 }
