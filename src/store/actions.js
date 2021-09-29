@@ -106,3 +106,21 @@ export const initFavourites = (id) =>{
             })
     }
 }
+
+const setUm = (um)=>{
+    return {
+        type: actionTypes.SET_UM,
+        um: um
+    }
+
+} 
+
+export const initUm = () =>{
+
+    return dispatch => {
+        axios.get("/um/")
+            .then(response=>{
+                dispatch(setUm(response.data))
+            })
+    }
+}

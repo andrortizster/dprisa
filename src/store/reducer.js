@@ -8,6 +8,7 @@ const initialState = {
     user: [],
     credits: [],
     favourites: [],
+    um: [],
 }
 
 
@@ -37,6 +38,11 @@ const reducer = (state=initialState, action)=>{
             return{
                 ...state,
                 favourites: action.fvt
+            }   
+        case actionTypes.SET_UM:
+            return{
+                ...state,
+                um: action.um
             }   
         default:
             return state;

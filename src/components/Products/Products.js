@@ -43,11 +43,11 @@ const Products = (props) =>{
                 <RowData />
             </tbody>
         </Table>
-        {modal ? (
             <Modal
                 item={activeItem}
+                modal={modal}
+                setModal={setModal}
             />
-        ) : null}
         </div>
     );
 }
