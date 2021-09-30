@@ -1,8 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {
-    Table
+    Table,
+    Button,
+    InputGroup,
+    FormControl
 } from 'react-bootstrap';
 import { connect,} from 'react-redux';
+import {faPlusCircle,faSearch} from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 import ProductRow from './ProductRow';
 import * as actionTypes from '../../store/actions';
@@ -29,6 +34,17 @@ const Products = (props) =>{
     return(
         <div  style={{marginTop:'70px'}}>
         <h2>Edición de productos</h2>
+        <div style={{display:"flex",justifyItems:"stretch", marginBottom:"10px",}}>
+            <Button variant="success"><FontAwesomeIcon icon={faPlusCircle}/> Añadir producto</Button>
+            <InputGroup className="mb-3" width="120px">
+                <FormControl
+                placeholder="Buscar"
+                aria-label="Buscar"
+                aria-describedby="basic-addon2"
+                />
+                <InputGroup.Text id="basic-addon2"><FontAwesomeIcon icon={faSearch}/></InputGroup.Text>
+            </InputGroup>
+        </div>
         <Table striped bordered hover size="sm">
             <thead>
                 <tr>

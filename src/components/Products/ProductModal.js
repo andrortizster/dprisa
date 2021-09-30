@@ -12,11 +12,12 @@ import * as actionTypes from '../../store/actions';
 
 const ProductModal = (props) =>{
 
-    const {onInitUm} = props
+    const {onInitUm, onInitDepartments} = props
 
     useEffect(()=>{
-        onInitUm()
-    },[onInitUm])
+        onInitUm();
+        onInitDepartments();
+    },[onInitUm,onInitDepartments])
 
     const handleShow = () => {
         props.setModal(!props.modal)
@@ -37,6 +38,16 @@ const ProductModal = (props) =>{
                     <Form.Group className="mb-3" controlId="formDescription">
                         <FloatingLabel controlId="floatingDescriptionGrid" label="Descripción">
                             <Form.Control as="textarea" rows={5} placeholder="Entre una descripción" value={props.item===null?null:props.item.description} />
+                        </FloatingLabel>
+                    </Form.Group>
+                    <Form.Group style={{marginBottom:"15px"}}>
+                        <FloatingLabel controlId="floatingDepGrid" label="Departamento">
+                            <Form.Select aria-label="Departamento" defaultValue={props.item===null?null:props.item.department}>
+                                <option>Seleccione una opción</option>
+                                {props.departments.map((item)=>( 
+                                    <option value={item.id}  >{item.name}</option>
+                                ))}
+                            </Form.Select>
                         </FloatingLabel>
                     </Form.Group>
                     <Row className="g-2" style={{marginBottom:"15px"}}>
@@ -77,12 +88,14 @@ const ProductModal = (props) =>{
 const mapStateToProps = state => {
     return {      
       um: state.um,
+      departments: state.departments,
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return{
       onInitUm: () => dispatch(actionTypes.initUm()),
+      onInitDepartments: () => dispatch(actionTypes.initDepartments())
     }
 }
 

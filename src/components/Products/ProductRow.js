@@ -3,7 +3,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 const ProductRow = (props) =>{
     return(        
-        <tr>
+        <tr key={props.item.id}>
         <td>{props.item.id}</td>
         <td>{props.item.name}</td>
         <td>{props.item.price}</td>
