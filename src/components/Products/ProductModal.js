@@ -37,13 +37,31 @@ const ProductModal = (props) =>{
 
     const handleChange = (e) => {
         let { name, value } = e.target;
-        setActiveItem({ ...activeItem, [name]: value });
+        if (e.target.files!==null){
+            console.log(e.target.files[0]);
+            setActiveItem({ ...activeItem, [name]: e.target.files[0] });
+        }else{
+            setActiveItem({ ...activeItem, [name]: value });
+        }
     }
 
     const handleSubmit = () => {
+        const config = {     
+            headers: { 'content-type': 'multipart/form-data' }
+        }
+
         console.log(activeItem);
+        let form = new FormData();
+        console.log(activeItem.photo.file)
+        form.append('name',activeItem.name);
+        form.append('description',activeItem.description);
+        form.append('photo',activeItem.photo);
+        form.append('shop',activeItem.shop);
+        form.append('um',activeItem.um);
+        form.append('department',activeItem.department);
+
         axios
-        .put('/products/'+activeItem.id+'/',activeItem)
+        .put('/products/'+activeItem.id+'/',form,config)
         .then(response=>{
             console.log(response.data)
         })
