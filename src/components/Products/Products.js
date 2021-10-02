@@ -17,13 +17,18 @@ const Products = (props) =>{
     const {products, onInitProducts} = props
     const [modal,setModal] = useState(false);
     const [activeItem,setActiveItem] = useState(null)
+    const [searchValue,setSearchValue] = useState('')
 
     useEffect(()=>{
             onInitProducts()
     },[onInitProducts])
 
     const RowData = () =>{
-        return props.products.map((item)=> <ProductRow item={item} handleEdit={handleEdit} /> )
+        const filteredItems = props.products.filter(lista => {
+            return lista.name.toLowerCase().includes(searchValue.toLowerCase());
+          });
+
+        return filteredItems.map((item)=> <ProductRow item={item} handleEdit={handleEdit} /> )
     }
 
     const handleEdit = (item) =>{
@@ -31,19 +36,17 @@ const Products = (props) =>{
         setModal(true);
     }
 
+    const searchChange = (e) =>{
+        setSearchValue(e.target.value)
+    }
+
     return(
         <div  style={{marginTop:'70px'}}>
         <h2>Edición de productos</h2>
-        <div style={{display:"flex",justifyItems:"stretch", marginBottom:"10px",}}>
-            <Button variant="success"><FontAwesomeIcon icon={faPlusCircle}/> Añadir producto</Button>
-            <InputGroup className="mb-3" width="120px">
-                <FormControl
-                placeholder="Buscar"
-                aria-label="Buscar"
-                aria-describedby="basic-addon2"
-                />
-                <InputGroup.Text id="basic-addon2"><FontAwesomeIcon icon={faSearch}/></InputGroup.Text>
-            </InputGroup>
+        <div style={{display:"flex",justifyContent:"space-between", marginBottom:"10px",}}>
+            <Button width="520px" variant="success"><FontAwesomeIcon icon={faPlusCircle}/> Nuevo producto</Button>
+            <div></div>
+                <input type="text" placeholder="Buscar" style={{borderRadius:"5px"}}  onChange={searchChange} />
         </div>
         <Table striped bordered hover size="sm">
             <thead>
