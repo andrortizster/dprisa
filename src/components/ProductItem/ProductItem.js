@@ -63,7 +63,7 @@ import axios from '../../axios';
                     activeItem={props.item}
                     toggle = {toggle}
                     toFavorites = {toFavorites}
-                    showWhish = {props.showWish}
+                    showWish = {props.showWish}
                 />
             ) : null}
         </Col>
