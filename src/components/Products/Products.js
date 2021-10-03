@@ -36,6 +36,22 @@ const Products = (props) =>{
         setModal(true);
     }
 
+    const handleNew = () =>{
+        setActiveItem({
+            brand: null,
+            department: null,
+            description: null,
+            model: null,
+            name: null,
+            photo: null,
+            price: null,
+            shop: 2,
+            um: null,
+        })
+
+        setModal(true);
+    }
+
     const searchChange = (e) =>{
         setSearchValue(e.target.value)
     }
@@ -44,7 +60,13 @@ const Products = (props) =>{
         <div  style={{marginTop:'70px'}}>
         <h2>Edición de productos</h2>
         <div style={{display:"flex",justifyContent:"space-between", marginBottom:"10px",}}>
-            <Button width="520px" variant="success"><FontAwesomeIcon icon={faPlusCircle}/> Nuevo producto</Button>
+            <Button 
+                width="520px" 
+                variant="success"
+                onClick={handleNew}
+            >
+                <FontAwesomeIcon icon={faPlusCircle}/> Nuevo producto
+            </Button>
             <div></div>
                 <input type="text" placeholder="Buscar" style={{borderRadius:"5px"}}  onChange={searchChange} />
         </div>
@@ -66,6 +88,7 @@ const Products = (props) =>{
                 item={activeItem}
                 modal={modal}
                 setModal={setModal}
+                refreshList={props.onInitProducts}
             />
         </div>
     );
