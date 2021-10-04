@@ -9,26 +9,26 @@ import { connect,} from 'react-redux';
 import {faPlusCircle,faSearch} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
-import ProductRow from './ProductRow';
+import UmRow from './UmRow';
 import * as actionTypes from '../../store/actions';
-import Modal from './ProductModal';
+import Modal from './UmModal';
 
-const Products = (props) =>{
-    const {products, onInitProducts} = props;
+const Um = (props) => {
+    const {um, onInitUm} = props;
     const [modal,setModal] = useState(false);
     const [activeItem,setActiveItem] = useState(null)
     const [searchValue,setSearchValue] = useState('')
 
     useEffect(()=>{
-            onInitProducts()
-    },[onInitProducts])
+        onInitUm()
+    },[onInitUm])
 
     const RowData = () =>{
-        const filteredItems = props.products.filter(lista => {
+        const filteredItems = props.um.filter(lista => {
             return lista.name.toLowerCase().includes(searchValue.toLowerCase());
           });
 
-        return filteredItems.map((item)=> <ProductRow item={item} handleEdit={handleEdit} /> )
+        return filteredItems.map((item)=> <UmRow item={item} handleEdit={handleEdit} /> )
     }
 
     const handleEdit = (item) =>{
@@ -38,15 +38,7 @@ const Products = (props) =>{
 
     const handleNew = () =>{
         setActiveItem({
-            brand: null,
-            department: null,
-            description: null,
-            model: null,
             name: null,
-            photo: null,
-            price: null,
-            shop: 2,
-            um: null,
         })
 
         setModal(true);
@@ -58,14 +50,14 @@ const Products = (props) =>{
 
     return(
         <div  style={{marginTop:'70px'}}>
-        <h2>Edición de productos</h2>
+        <h2>Edición de unidades de medida</h2>
         <div style={{display:"flex",justifyContent:"space-between", marginBottom:"10px",}}>
             <Button 
                 width="520px" 
                 variant="success"
                 onClick={handleNew}
             >
-                <FontAwesomeIcon icon={faPlusCircle}/> Nuevo producto
+                <FontAwesomeIcon icon={faPlusCircle}/> Nueva unidad de medida
             </Button>
             <div></div>
                 <input type="text" placeholder="Buscar" style={{borderRadius:"5px"}}  onChange={searchChange} />
@@ -75,9 +67,6 @@ const Products = (props) =>{
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>U/M</th>
-                    <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
@@ -88,22 +77,23 @@ const Products = (props) =>{
                 item={activeItem}
                 modal={modal}
                 setModal={setModal}
-                refreshList={props.onInitProducts}
+                refreshList={props.onInitUm}
             />
         </div>
     );
+
 }
 
 const mapStateToProps = state => {
     return {      
-      products: state.products,
+      um: state.um,
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return{
-      onInitProducts: () => dispatch(actionTypes.initProducts()),
+      onInitUm: () => dispatch(actionTypes.initUm()),
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Products);
+export default connect(mapStateToProps,mapDispatchToProps)(Um);

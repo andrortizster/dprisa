@@ -35,6 +35,7 @@ const NavBar = (props) => {
             <Aux> 
               <NavDropdown title="Administración" id="basic-nav-dropdown">
                 <NavDropdown.Item >
+                  <Link className="nav nav-link " title="Editar Unidades de medida" to="/edit_um"  > Edición de Unidades de medida</Link>
                   <Link className="nav nav-link " title="Editar productos" to="/edit_products"  > Edición de productos</Link>
                 </NavDropdown.Item>
               </NavDropdown>

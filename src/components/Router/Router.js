@@ -6,6 +6,7 @@ import Catalogue from '../Catalogue/Catalogue';
 import Login from '../Login/Login';
 import UserSettings from '../UserSettings/UserSettings';
 import Products from '../Products/Products';
+import Um from '../Um/Um';
 
 
 const Router = ()=> {
@@ -16,6 +17,7 @@ const Router = ()=> {
             <Route path="/login" component={Login} />
             <Route path="/user_settings" component={UserSettings} />
             <Route path="/edit_products" component={Products} />            
+            <Route path="/edit_um" component={Um} />            
         </Switch>
 
     )
