@@ -6,6 +6,7 @@ const initialState = {
     products:[],
     departments:[],
     user: [],
+    users: [],
     credits: [],
     favourites: [],
     um: [],
@@ -28,6 +29,11 @@ const reducer = (state=initialState, action)=>{
             return{
                 ...state,
                 user: action.usr
+            }   
+        case actionTypes.SET_USERS:
+            return{
+                ...state,
+                users: action.usrs
             }   
         case actionTypes.SET_CREDITS:
             return{

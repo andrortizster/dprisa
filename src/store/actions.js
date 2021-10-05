@@ -68,6 +68,25 @@ export const initUser = (id) =>{
     }
 }
 
+export const setUsers = (usrs)=>{
+    return {
+        type: actionTypes.SET_USERS,
+        usrs: usrs
+    }
+
+} 
+
+export const initUsers = () =>{
+
+    return dispatch => {
+        axios.get("/users/")
+            .then(response=>{
+                console.log(response.data)
+                dispatch(setUsers(response.data))
+            })
+    }
+}
+
 export const setCredits = (crd)=>{
     console.log(crd)
     return {
