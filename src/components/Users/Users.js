@@ -9,6 +9,7 @@ import {
 
 import * as actionTypes from '../../store/actions';
 import UserRow from './UserRow';
+import './Users.css';
 
 const Users = (props) => {
     const {initUsers} = props;
@@ -27,12 +28,12 @@ const Users = (props) => {
             return lista.first_name.toLowerCase().includes(searchValue.toLowerCase());
           });
 
-        return filteredItems.map((item)=> <UserRow item={item} /> )
+        return filteredItems.map((item)=> <UserRow item={item} setActiveUser={props.setActiveUser}  /> )
     }
 
     return(
-        <div>
-        <Row style={{marginLeft:"5px", marginRight:"5px"}}>
+        <div style={{marginLeft:"5px", marginRight:"5px"}}>
+        <Row>
             <FloatingLabel controlId="floatingNameGrid" label="Buscar">
                 <Form.Control 
                     type="text" 

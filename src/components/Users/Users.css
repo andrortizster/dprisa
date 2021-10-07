@@ -1,0 +1,9 @@
+.UserRow{
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.UserRow:hover{
+    background-color: gray;
+    color:white;
+}

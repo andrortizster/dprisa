@@ -5,7 +5,7 @@ import {
 
 const UserRow= (props) => {
     return(
-        <Row style={{marginLeft:"5px"}}> 
+        <Row className="UserRow" onClick={() => props.setActiveUser(props.item)}> 
             {props.item.first_name}
         </Row>
     )
