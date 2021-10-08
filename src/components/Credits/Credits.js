@@ -3,6 +3,7 @@ import {
     Row,
     Col,
 } from 'react-bootstrap';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
 import Users from '../Users/Users';
 import CreditsPanel from './CreditsPanel';
@@ -18,7 +19,7 @@ const Credits = () => {
                     <Users setActiveUser={setActiveUser} />
                 </Col>
                 <Col>
-                    <CreditsPanel activeUser={activeUser} />
+                    <CreditsPanel activeUser={activeUser} initUsers={propTypes.initUsers} />
                 </Col>
             </Row>
         </div>

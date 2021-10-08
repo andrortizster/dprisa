@@ -28,7 +28,12 @@ const Users = (props) => {
             return lista.first_name.toLowerCase().includes(searchValue.toLowerCase());
           });
 
-        return filteredItems.map((item)=> <UserRow item={item} setActiveUser={props.setActiveUser}  /> )
+        return filteredItems.map((item)=> (<UserRow 
+            item={item} 
+            setActiveUser={props.setActiveUser}  
+            initUsers={props.initUsers}
+            />
+            ) )
     }
 
     return(
