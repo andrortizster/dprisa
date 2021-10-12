@@ -47,6 +47,9 @@ const NavBar = (props) => {
                     <NavDropdown.Item>
                       <Link className="nav nav-link " title="Editar créditos" to="/edit_credits"  > Edición de Créditos</Link>
                     </NavDropdown.Item>
+                    <NavDropdown.Item>
+                      <Link className="nav nav-link " title="Editar facturas" to="/edit_invoices"  > Edición de Facturas</Link>
+                    </NavDropdown.Item>
                   </NavDropdown>
               </NavDropdown>
             </Aux>

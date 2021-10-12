@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import { connect,} from 'react-redux';
 import { 
+    Card,
     FloatingLabel,
     Form,
     Row,
@@ -38,18 +39,21 @@ const Users = (props) => {
 
     return(
         <div style={{marginLeft:"5px", marginRight:"5px"}}>
-        <Row>
-            <FloatingLabel controlId="floatingNameGrid" label="Buscar">
-                <Form.Control 
-                    type="text" 
-                    placeholder="Buscar" 
-                    name="name"
-                    onChange={searchChange}
-                />
-            </FloatingLabel>
-        </Row>
-        <hr/>
-        <RowData />
+            <Card>
+                <Card.Header>
+                    <FloatingLabel controlId="floatingNameGrid" label="Buscar">
+                        <Form.Control 
+                            type="text" 
+                            placeholder="Buscar" 
+                            name="name"
+                            onChange={searchChange}
+                        />
+                    </FloatingLabel>
+                </Card.Header>
+                <Card.Body>
+                    <RowData />
+                </Card.Body>
+            </Card>
         </div>
     )
 

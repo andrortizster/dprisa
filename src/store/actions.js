@@ -107,6 +107,25 @@ export const initCredits = (id) =>{
     }
 }
 
+export const setInvoices = (inv)=>{
+    console.log(inv)
+    return {
+        type: actionTypes.SET_INVOICES,
+        inv: inv
+    }
+
+}
+
+export const initInvoices = (id, shop) =>{
+
+    return dispatch => {
+        axios.get("/users/"+id+"/orders/"+shop)
+            .then(response=>{
+                console.log(response)
+                dispatch(setInvoices(response.data))
+            })
+    }
+}
 
 export const setFavourites = (fvt)=>{
     return {

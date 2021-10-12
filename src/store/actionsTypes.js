@@ -3,6 +3,7 @@ export const SET_DEPARTMENTS = 'SET_DEPARTMENTS';
 export const SET_USER = 'SET_USER';
 export const SET_USERS = 'SET_USERS';
 export const SET_CREDITS = 'SET_CREDITS';
+export const SET_INVOICES = 'SET_INVOICES';
 export const SET_FAVOURITES = 'SET_FAVOURITES';
 export const SET_UM = 'SET_UM';
 

@@ -9,6 +9,7 @@ import Products from '../Products/Products';
 import Um from '../Um/Um';
 import Departments from '../Departments/Departments';
 import Credits from '../Credits/Credits';
+import Invoices from '../Invoices/Invoices';
 
 
 const Router = ()=> {
@@ -22,6 +23,7 @@ const Router = ()=> {
             <Route path="/edit_um" component={Um} />            
             <Route path="/edit_departments" component={Departments} />            
             <Route path="/edit_credits" component={Credits} />            
+            <Route path="/edit_invoices" component={Invoices} />            
         </Switch>
 
     )
