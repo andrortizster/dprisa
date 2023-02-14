@@ -11,7 +11,7 @@ import {faLock,faLockOpen, faCog} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { connect,} from 'react-redux';
 
-import avion from '../../assets/img/avion01.png';
+import avion from '../../assets/img/logo1.png';
 import './NavBar.css';
 import axios from '../../axios';
 import Aux from '../../hoc/Auxiliary';
@@ -106,7 +106,7 @@ const NavBar = (props) => {
       <Navbar collapseOnSelect bg="light" expand="lg" fixed="top">
         <Container>
           <Navbar.Brand >
-            <Link className="navbar navbar-brand" to="/"><img src={avion} height='32px' alt="Logo" /> Brianna Pack</Link>
+            <Link className="navbar navbar-brand" to="/"><img src={avion} height='32px' alt="Logo" /></Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">

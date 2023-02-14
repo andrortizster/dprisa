@@ -6,11 +6,13 @@ import {
 import {faHeart} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { connect,} from 'react-redux';
-
+import ReactWhatsapp from 'react-whatsapp';
 
 import no_photo from '../../assets/img/no_photo.png';
+import whatsapp from '../../assets/img/whatsapp.png';
 import Modal from '../ProductDetail/ProductDetail';
 import axios from '../../axios';
+
 
  const ProductItem = (props) => {
     const [modal,setModal] = useState(false);
@@ -49,12 +51,15 @@ import axios from '../../axios';
                 <CardBody>
                 <CardTitle tag="h5">{props.item.name}</CardTitle>
                 <CardText>{props.item.description}</CardText>
-                {props.showWish?
+                <ReactWhatsapp number="1-212-736-5000" message="Hello World!!!" element={Button}>
+                    <img src={whatsapp} width="32" height="32" />
+                </ReactWhatsapp>
+                {/*props.showWish?
                     <Button color="danger" title="Añadir a favoritos" onClick={toFavorites} >
                         <FontAwesomeIcon icon={faHeart} />
                     </Button>:
-                    null
-                 }
+                    null*/
+                }
                 </CardBody>
             </Card>
 

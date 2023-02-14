@@ -29,8 +29,8 @@ const Landing = () => {
             >
                 <div style={{textAlign:'center',}}>
                 <div className="parallax_title" >
-                    <h1 className='mb-3 fw-bold'  >Envíos a Cuba desde zona libre</h1>
-                    <h1 className='mb-3 fw-bold'  >Panamá</h1>
+                    <h1 className='mb-3 fw-bold'  >Solo lo mejor para usted</h1>
+                    <h1 className='mb-3 fw-bold'  >Contáctenos</h1>
                 </div>
                 <br/>
                 <Link to="/catalogo" className="btn btn-secondary" >Ver catálogo</Link>
