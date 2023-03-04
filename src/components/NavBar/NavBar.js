@@ -11,7 +11,7 @@ import {faLock,faLockOpen, faCog} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { connect,} from 'react-redux';
 
-import avion from '../../assets/img/logo1.png';
+import avion from '../../assets/img/Azul_y_Amarillo.png';
 import './NavBar.css';
 import axios from '../../axios';
 import Aux from '../../hoc/Auxiliary';

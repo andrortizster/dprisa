@@ -7,13 +7,13 @@
 .InfoIco{
     width:64px;
     height:64px; 
-    background-color:green;
+    background-color:#0a0f32;
     border-radius:50%;
     text-align:center;
 }
 
 .InfoSign{
     font-size: 42px;
-    color:white;
+    color:#ffb600;
     margin-top:10px;
 }
