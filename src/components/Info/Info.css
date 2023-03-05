@@ -8,12 +8,19 @@
     width:64px;
     height:64px; 
     background-color:#0a0f32;
+    
     border-radius:50%;
     text-align:center;
 }
 
 .InfoSign{
     font-size: 42px;
-    color:#ffb600;
+    color:#ffb600 !important;
     margin-top:10px;
+}
+
+InfoTitle {
+    text-align:center;
+    color: #0a0f32;
+    font-weight:600
 }

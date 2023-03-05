@@ -7,7 +7,43 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: 'Avenir';
+  font-style: normal;
+  font-weight: 400;
+  /*font-display: fallback;*/
+  src: url('./assets/fonts/Avenir-Book.eot'); /* IE9 Compat Modes */
+  src: url('./assets/fonts/Avenir-Book.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('./assets/fonts/avenir-medium.woff2') format('woff2'), /* Super Modern Browsers */
+  url('./assets/fonts/Avenir-Roman.woff') format('woff'), /* Pretty Modern Browsers */
+  url('./assets/fonts/Avenir-Book.ttf')  format('truetype'), /* Safari, Android, iOS */
+  url('./assets/fonts/Avenir-Book.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+	font-family: 'TradeMarker';
+  font-style: normal;
+  font-weight: 400;
+	src: url('./assets/fonts/TradeMarker-Bold.otf'), url('./assets/fonts/TradeMarker-BoldItalic.otf');
+}
+
+body #root {
+  margin-top: -1rem;
+}
+
+*, body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Avenir !important;
+  
+}
+
+
+
+@font-face {
+  font-family: 'Avenir heavy';
+  font-style: normal;
+  font-weight: 800; 
+  src: url('./assets/fonts/Avenir-Heavy.eot');
+  src: url('./assets/fonts/Avenir-Heavy.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
 }

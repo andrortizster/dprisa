@@ -20,10 +20,10 @@ const Info = () =>{
                                 <FontAwesomeIcon icon={faDollarSign} className="InfoSign" />
                             </div>
                         </Card.Header>
-                        <Card.Title style={{textAlign:"center"}}> 
+                        <Card.Title style={{textAlign:"center",color: "#0a0f32",fontWeight:"600"}}> 
                             Seguridad para su inversión
                         </Card.Title>
-                        <Card.Body>
+                        <Card.Body style={{color: "#0a0f32",fontWeight:"400"}}>
                             Su dinero está a salvo con nosotros, tenemos total confianza en que podemos 
                             hacer una compra que le sea de su agrado de acuerdo a la suma que ponga en 
                             nuestras manos. Además podrá saber en todo momento que uso le damos a su dinero.
@@ -37,10 +37,10 @@ const Info = () =>{
                                 <FontAwesomeIcon icon={faShoppingBasket} className="InfoSign" />
                             </div>
                         </Card.Header>
-                        <Card.Title style={{textAlign:"center"}}> 
+                        <Card.Title style={{textAlign:"center",color: "#0a0f32",fontWeight:"600"}}> 
                             Compras personalizadas
                         </Card.Title>
-                        <Card.Body>
+                        <Card.Body style={{color: "#0a0f32",fontWeight:"400"}}>
                             Ponemos un comprador a su disposición, usted podrá estar con el en el momento de 
                             la compra en zona libre. El comprador lo llevará a los lugares donde se encuentra
                             la mejor mercancía de acuerdo a su lista de deseos.
@@ -55,10 +55,10 @@ const Info = () =>{
                             </div>
                         </Card.Header>
 
-                        <Card.Title style={{textAlign:"center"}}> 
+                        <Card.Title style={{textAlign:"center",color: "#0a0f32",fontWeight:"600"}}> 
                             Envío inmediato
                         </Card.Title>
-                        <Card.Body>
+                        <Card.Body style={{color: "#0a0f32",fontWeight:"400"}}>
                             Una vez concluida la compra, su mercancía será empaquetada y enviada de inmediato
                             así garantizamos que sea embarcada lo antes posible. También ponemos a su disposición
                             los números de los paquetes para que pueda comprobar su estado durante el envío.

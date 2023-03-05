@@ -12,10 +12,22 @@
     box-sizing: border-box;
 }
 
-.parallax_title{
+.parallax_title h1{
     color: white;
 }
 
+
+
 .parallax_title2{
+    color: #0a0f32;
     text-align: center;
+}
+
+.parallax_title2 h2{
+    font-weight: 600;
+}
+
+.parallax_title2 p{
+    font-weight: 500;
+    font-size: 18px;
 }

@@ -6,6 +6,8 @@ import { connect,} from 'react-redux';
 import * as actionTypes from '../../store/actions';
 import ProductItem from '../ProductItem/ProductItem';
 
+import './Catalogue.css'
+
 
 
 const Catalogue = (props) => {
@@ -68,7 +70,7 @@ const Catalogue = (props) => {
     }
 
     return (
-        <div style={{marginTop:'70px',textAlign:'center'}}>
+        <div className='catalogue' >
             <h1>Catálogo de productos</h1>
             <Row>
             <Col xs="12" sm="2">
