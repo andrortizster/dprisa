@@ -27,9 +27,7 @@ body {
 	src: url('./assets/fonts/TradeMarker-Bold.otf'), url('./assets/fonts/TradeMarker-BoldItalic.otf');
 }
 
-body #root {
-  margin-top: -1rem;
-}
+
 
 *, body, html {
   margin: 0;
