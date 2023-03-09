@@ -51,7 +51,7 @@ import axios from '../../axios';
                 <CardBody>
                 <CardTitle tag="h5">{props.item.name}</CardTitle>
                 <CardText>{props.item.description}</CardText>
-                <ReactWhatsapp number="1-212-736-5000" message="Hello World!!!" element={Button}>
+                <ReactWhatsapp number={props.item.phone} message={`¡Hola! me interesa el producto ${props.item.name}`} element={Button}>
                     <img src={whatsapp} width="32" height="32" />
                 </ReactWhatsapp>
                 {/*props.showWish?
